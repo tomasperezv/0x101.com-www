@@ -5,11 +5,26 @@
 		</title>
 	</head>
 	<body>
+
+		<form action="http://api.tomasperez.com:8000/login" method="post">
+			<br/>
+			Login:&nbsp;<input type="text" value="" name="login" />
+			Password:&nbsp;<input type="password" value="" name="password" />
+			<input type="submit" value="login" />
+		</form>
+
+
 		<form action="http://api.tomasperez.com:8000/addPost" method="post">
+
+			<br/>
+			Login:&nbsp;<input type="text" value="" name="login" />
+			Session:&nbsp;<input type="text" value="" name="session" />
+
 			<textarea name="content" rows="10" cols="80"></textarea>
 
 			<br/>
 			<input type="submit" value="send" />
 		</form>
+
 	</body>
 </html>

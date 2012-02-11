@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>{{title}}</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+
+		<script type="text/javascript">
+			document.domain = '{{domain}}';
+		</script>
+
+		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
+		<link rel="stylesheet" href="{{static_domain}}/css/base.css" />
+		<link rel="stylesheet" media="only screen and (max-device-width:800px)" href="{{static_domain}}/css/mobile.css" />
+	</head>
+	<body>
+
+		<div id="loginForm" style="display:none">
+			<form action="" method="post">
+				<fieldset>
+					<label for="login">User</label>
+					<input type="text" value="" name="login" id="login" />
+					<label for="password">Password</label>
+					<input type="password" value="" name="password" id="password" />
+					<a href="#"	onclick="Admin.login()">Login</a>
+				</fieldset>
+			</form>
+		</div>
+
+		<div id="main" style="display:none">
+			<a href="#"	onclick="Admin.logout()">Logout</a>
+			{{description}}
+		</div>
+
+	</body>
+
+	<script type="text/javascript">
+
+		Loader.loadFiles(function() {
+			// Overwrite the appURL with the correct value
+			AjaxEngine.appUrl = 'https://{{api_url}}/'; 		
+
+			if (!Admin.isLogged()) {
+				// Not logged in, show the form
+				var loginForm = document.getElementById('loginForm');
+				if (loginForm.style.display == 'none') {
+					loginForm.style.display = '';
+				}
+			} else {
+				Admin.showPosts();
+			}
+
+		});
+
+	</script>
+
+</html>

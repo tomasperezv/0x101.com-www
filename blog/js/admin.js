@@ -3,18 +3,33 @@ var Admin = {
 	loginForm: {
 
 		getLoginData: function() {
-			return {login: document.getElementById('login').value,
-					password: document.getElementById('password').value}
+			return {login: DOM.get('login').value,
+					password: DOM.get('password').value}
 		},
 
 		error: function() {
-			document.getElementById('loginForm').className = 'error';
+			DOM.get('loginForm').className = 'error';
 		},
 
 		clear: function() {
-			document.getElementById('login').value = '';
-			document.getElementById('password').value = '';
-		},
+			DOM.get('login').value = '';
+			DOM.get('password').value = '';
+		}
+	},
+
+	api: function(method, params, onSuccess, onError) {
+		if (this.isLogged()) {
+			// Add the login info to the params
+			var params = this.addSessionInfo(params);
+			AjaxEngine.post(method, params, onSuccess, onError);
+		}
+	},
+
+	addSessionInfo: function(params) {
+		var session = Session.get();
+		params.login = session.login;
+		params.session = session.challenge;
+		return params;
 	},
 
 	login: function() {
@@ -26,7 +41,7 @@ var Admin = {
 			AjaxEngine.post('login', loginData, function(data) {
 				if (typeof data.id !== 'undefined') {
 					Session.set(data);
-					loginForm.style.display = 'none';
+					DOM.toggle(loginForm);
 					self.showPosts()
 				}
 			}, function() {
@@ -40,8 +55,7 @@ var Admin = {
 
 	logout: function() {
 		Session.destroy();
-		document.getElementById('main').style.display = 'none';
-		document.getElementById('loginForm').style.display = '';
+		DOM.toggle(['main', 'loginForm']);
 		this.loginForm.clear();
 	},
 
@@ -55,7 +69,9 @@ var Admin = {
 	},
 
 	showPosts: function() {
-		document.getElementById('main').style.display = '';
+		DOM.toggle('main');
+		this.api('getPosts', function(posts) {
+		});
 	}
 };
 

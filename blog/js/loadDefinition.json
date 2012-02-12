@@ -1,3 +1,4 @@
 [
+	"./js/dom.js",
 	"./js/admin.js"
 ]

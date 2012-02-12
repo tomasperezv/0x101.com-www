@@ -43,6 +43,8 @@ var Admin = {
 					Session.set(data);
 					DOM.toggle('loginForm');
 					self.showPosts()
+				} else {
+					self.loginForm.error();
 				}
 			}, function() {
 				self.loginForm.error();
@@ -70,7 +72,8 @@ var Admin = {
 
 	showPosts: function() {
 		DOM.toggle('main');
-		this.api('getPosts', function(posts) {
+		this.api('getPosts', {}, function(posts) {
+			DOM.get('posts').innerHTML = posts;
 		});
 	}
 };

@@ -41,7 +41,7 @@ var Admin = {
 			AjaxEngine.post('login', loginData, function(data) {
 				if (typeof data.id !== 'undefined') {
 					Session.set(data);
-					DOM.toggle(loginForm);
+					DOM.toggle('loginForm');
 					self.showPosts()
 				}
 			}, function() {

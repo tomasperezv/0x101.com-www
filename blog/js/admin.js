@@ -1,5 +1,8 @@
 var Admin = {
 
+	bindMap: {
+	},
+
 	loginForm: {
 
 		getLoginData: function() {
@@ -70,10 +73,24 @@ var Admin = {
 		return logged;
 	},
 
+	init: function() {
+		this.showPosts();
+		this.bindEvents();
+	},
+
+	bindEvents: function() {
+		for(var elementId in this.bindMap) {
+			if( this.bindMap.hasOwnProperty(elementId) ) {
+				DOM.get(elementId).onclick = this.bindMap[elementId];
+			}
+		}
+	},
+
 	showPosts: function() {
-		DOM.toggle('main');
+		DOM.show('main');
 		this.api('getPosts', {}, function(posts) {
 			DOM.get('posts').innerHTML = posts;
+			DOM.get('newPost').onclick = Post.add;
 		});
 	}
 };
@@ -120,4 +137,22 @@ var Session = {
 	}
 
 };
+
+var Post = {
+	add: function() {
+
+		var content = DOM.get('newPostContent');
+		var postData = {
+			content: content.value
+		};
+
+		Admin.api('addPost', postData, function(data) {
+			if (typeof data.id !== 'undefined') {
+				Admin.showPosts();
+				content.value = '';
+			}
+		});
+	}
+};
+
 

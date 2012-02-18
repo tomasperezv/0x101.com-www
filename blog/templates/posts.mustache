@@ -1,4 +1,15 @@
 {{#post}}
-	<span>{{date}}</span>
-	<textarea id="post_">{{content}}</textarea>
+	<div>
+		<span>{{date}}</span>
+		<div>
+			<textarea class="post" id="post_{{id}}">{{content}}</textarea>
+			<a href="#" id="editPost">Edit</a>
+			<a href="#" id="deletePost">Delete</a>
+		</div>
+	</div>
 {{/post}}
+
+<div>
+	<textarea class="post" id="newPostContent"></textarea>
+	<a href="#" id="newPost">Add post</a>
+</div>

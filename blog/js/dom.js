@@ -23,6 +23,14 @@ var DOM = {
 		}
 	},
 
+	show: function(el) {
+		el = (typeof el == 'string' ? this.get(el) : el);
+		var style = el.style;
+		if (style.display == 'none') {
+			style.display = '';
+		}
+	},
+
 	get: function(id) {
 		return document.getElementById(id);
 	}

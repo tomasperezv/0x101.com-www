@@ -1,10 +1,10 @@
 {{#post}}
-	<div>
-		<span>{{date}}</span>
+	<div id="post_{{id}}">
+		<span id="post_date_{{id}}">{{date}}</span>
 		<div>
-			<textarea class="post" id="post_{{id}}">{{content}}</textarea>
-			<a href="#" id="editPost">Edit</a>
-			<a href="#" id="deletePost">Delete</a>
+			<textarea class="post" id="post_content_{{id}}">{{content}}</textarea>
+			<a href="#" onclick="Post.update(this)" postId="{{id}}">Edit</a>
+			<a href="#" onclick="Post.remove(this)" postId="{{id}}">Delete</a>
 		</div>
 	</div>
 {{/post}}

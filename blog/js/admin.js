@@ -45,7 +45,7 @@ var Admin = {
 				if (typeof data.id !== 'undefined') {
 					Session.set(data);
 					DOM.toggle('loginForm');
-					self.showPosts()
+					Post.Content.showPosts()
 				} else {
 					self.loginForm.error();
 				}
@@ -74,7 +74,7 @@ var Admin = {
 	},
 
 	init: function() {
-		this.showPosts();
+		Post.Content.showPosts();
 		this.bindEvents();
 	},
 
@@ -84,15 +84,8 @@ var Admin = {
 				DOM.get(elementId).onclick = this.bindMap[elementId];
 			}
 		}
-	},
-
-	showPosts: function() {
-		DOM.show('main');
-		this.api('getPosts', {}, function(posts) {
-			DOM.get('posts').innerHTML = posts;
-			DOM.get('newPost').onclick = Post.add;
-		});
 	}
+
 };
 
 var Session = {
@@ -139,20 +132,66 @@ var Session = {
 };
 
 var Post = {
+
+	Content: {
+		showPosts: function() {
+			DOM.show('main');
+			Admin.api('getPosts', {}, function(posts) {
+				DOM.get('posts').innerHTML = posts;
+				DOM.get('newPost').onclick = Post.add;
+			});
+		},
+
+		updatePost: function(data) {
+			var postId = data.id,
+			post = DOM.get('post_content_' + postId),
+			date = DOM.get('post_date_' + postId);
+			post.value = data.content;
+			date.innerHTML = data.date;
+		}
+	},
+
 	add: function() {
 
-		var content = DOM.get('newPostContent');
-		var postData = {
+		var content = DOM.get('newPostContent'),
+		postData = {
 			content: content.value
 		};
 
 		Admin.api('addPost', postData, function(data) {
 			if (typeof data.id !== 'undefined') {
-				Admin.showPosts();
+				Post.Content.showPosts();
 				content.value = '';
 			}
 		});
+	},
+
+	_processPost: function(post, method, callback) {
+		var postId = post.getAttribute('postId'),
+		postData = {
+			content: DOM.get('post_content_' + postId).value,
+			id: postId 
+		};
+
+		Admin.api(method, postData, callback);
+	},
+
+	update: function(post) {
+		this._processPost(post, 'updatePost', function(data) {
+			if (typeof data.id !== 'undefined') {
+				Post.Content.updatePost(data);
+			}
+		});
+	},
+
+	remove: function(post) {
+		this._processPost(post, 'removePost', function(data) {
+			if (typeof data.id !== 'undefined') {
+				DOM.get('post_' + data.id).innerHTML = '';
+			}
+		});
 	}
+
 };
 
 

@@ -1,19 +1,39 @@
 <!DOCTYPE HTML>
 
-<html>
+<html class="bg-1 text-1">
 	<head>
 		<title>{{title}}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
 		<link rel="stylesheet" type="text/css" media="all" href="{{static_domain}}/css/base.css" />
 		<link rel="stylesheet" media="only screen and (max-device-width:800px)" href="{{static_domain}}/css/mobile.css" />
 	</head>
-	<body>
-		<div id="main">
-			{{description}}
-			<div class="post">
-				{{firstPost}}
+	<body id="blog">
+
+		<div id="headlines">
+			<div id="headlines-content" class="text-2">
+				This is the headline http://www.google.com/
 			</div>
 		</div>
+		
+		<div id="main">
+
+			<div id="title" class="text-2">
+				<h1>{{description}}</h1>
+			</div>
+
+			<div class="post bg-2" class="text-1">
+				{{firstPost}}
+			</div>
+
+		</div>
+		
+		<div id="bottom">
+		</div>
+
 	</body>
 </html>
+
+
+

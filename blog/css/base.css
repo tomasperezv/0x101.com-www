@@ -1,6 +1,71 @@
-body {
+html {
+	background-image: url(images/background.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+	font: normal 13px Arial, Helvetica, sans-serif;
+}
+
+.bg-1 {
+	background-color: #2D2D2D;
+}
+
+.bg-2 {
+	background-color: #969696;
+}
+
+.text-1 {
+	color: #C8C8C8;
+}
+
+.text-2 {
+	color: white;
+}
+
+a, a:visited {
+	color: white;
+}
+
+#headlines {
+	height: 40px;
+}
+
+#headlines div {
+	width: 820px;
+	height: 70px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 12px 0 0 0;
+}
+
+#main div {
+	width: 820px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title {
+	padding: 0 60px 0;
+}
+
+#title h1 {
+	font: bold 50px Arial, Helvetica, sans-serif;
+	padding: 50px 0 15px 0;
+	letter-spacing: -2px;
+	text-shadow: #C8C8C8 0 -1px;
+}
+
+.post {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	min-height: 300px;
+	clear: both;
+	padding-top: 5px;
+	padding-left: 5px;
+	font-size: 20px;
 }
 
 .error {
-	background-color:red;
+	background-color:gold;
 }

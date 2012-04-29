@@ -8,8 +8,10 @@
  * 	PRIMARY KEY(id)
  * );
  */
-var basedir = __dirname + '/../../blackbriar/server';
-var DataBaseModel = require(basedir + '/model/database-model');
+var Setup = require('../setup.js'),
+	basedir = Setup.serverDirectory;
+
+var DataBaseModel = require('../' + basedir + '/model/database-model');
 
 Post = function() {
 

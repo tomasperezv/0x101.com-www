@@ -2,7 +2,9 @@
  * @author <tom@0x101.com>
  * @class Api
  */
-var basedir = __dirname + '/../blackbriar/server';
+var Setup = require('./setup.js'),
+	basedir = Setup.serverDirectory;
+
 var Post = require('./model/post').Post,
 	User = require(basedir + '/model/user').User,
 	Salt = require(basedir + '/model/salt').Salt,

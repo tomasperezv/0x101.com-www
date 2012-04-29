@@ -2,7 +2,9 @@
   * @author <tom@0x101.com>
   * @class TemplateEngine
   */
-var basedir = __dirname + '/../blackbriar/server';
+var Setup = require('./setup.js'),
+	basedir = Setup.serverDirectory;
+
 ServerCore = require(basedir + '/server-core'),
 Post = require('./model/post').Post;
 

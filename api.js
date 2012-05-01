@@ -34,6 +34,10 @@ this.serve = function(request, response) {
 	// TODO: Find a better way to redirect api calls to methods
 	switch (apiMethod) {
 
+		case 'getPost':
+			self.getPost(request);
+			break;
+
 		case 'getPosts':
 			this.servePrivate(request, function(data) {
 				self.getPosts(data);
@@ -146,6 +150,26 @@ this.getPosts = function() {
 			}
 		});
 
+	});
+
+};
+
+this.getPost = function(request) {
+
+	var api = this,
+		post = new Post(),
+		body = '';
+
+	request.on('data', function (data) {
+		body += data;
+	});
+
+	request.on('end', function () {
+		var data = qs.parse(body);
+
+		post.getPosts(data.position, function(data) {
+			api.responseCallback(data);
+		});
 	});
 
 };

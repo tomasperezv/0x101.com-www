@@ -39,28 +39,23 @@ a, a:visited {
 	padding: 12px 0 0 0;
 }
 
-#main div {
+.post, #title {
 	width: 820px;
-	margin-left: auto;
 	margin-right: auto;
-}
-
-#title {
-	padding: 0 60px 0;
 }
 
 #title h1 {
 	font: bold 50px Arial, Helvetica, sans-serif;
-	padding: 50px 0 15px 0;
+	padding: 25px 0 50px 0;
 	letter-spacing: -2px;
 	text-shadow: #C8C8C8 0 -1px;
+	margin-left: 10%;
 }
 
 .post {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	min-height: 300px;
-	clear: both;
 	padding-top: 5px;
 	padding-left: 5px;
 	font-size: 20px;
@@ -68,4 +63,51 @@ a, a:visited {
 
 .error {
 	background-color:gold;
+}
+
+.post {
+	float:left;
+}
+
+.menu {
+	border: 1px solid white;
+	width: 180px;
+	position:fixed;
+	right:20px;
+	top: 100;
+	font-size:20px;
+}
+
+.menu li {
+	margin-bottom:5px;
+}
+
+.menu ul {
+	list-style-type: none;
+}
+
+.navigator {
+	float:left;
+	width:50px;
+	height:50px;
+	position:fixed;
+	background-color:red;
+}
+
+.navigatorContainer {
+	float:left;
+	width:6%;
+	height:500px;
+}
+
+#navigatorPrev {
+	margin-left:2%;
+}
+
+#navigatorNext {
+	margin-left:4%;
+}
+
+.hide {
+	display: none;
 }

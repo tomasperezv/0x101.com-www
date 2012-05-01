@@ -15,15 +15,33 @@ this.processData = function(config, callback) {
 this.blog = {
 	index: function(callback) {
 
-		var post = new Post();
-		post.load({}, function(model) {
-			var firstPost = model.data[0].content;
-			callback({
+		var position = 0;
+
+		var post = new Post(),
+			templateParams = {
+				position: position,
 				title: 'blog.tomasperez.com',
 				static_domain: ServerCore.staticDomain(),
 				description: 'My personal blog',
-				firstPost: firstPost
-			});
+				api_url: ServerCore.apiDomain(),
+			};
+
+		post.getPosts(position, function(postData) {
+			// Add the extra info to the template params.
+			templateParams.firstPost = postData.post;
+			templateParams.count = postData.count;
+
+			if (position > 0) {
+				templateParams.hasNext = true;
+				templateParams.next = position-1;
+			}
+
+			if ( (postData.count - position) > 0 ) {
+				templateParams.hasPrev = true;
+				templateParams.prev = position+1;
+			}
+
+			callback(templateParams);
 		});
 
 	}

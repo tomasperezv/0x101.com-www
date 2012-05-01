@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
+		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
 		<link rel="stylesheet" type="text/css" media="all" href="{{static_domain}}/css/base.css" />
 		<link rel="stylesheet" media="only screen and (max-device-width:800px)" href="{{static_domain}}/css/mobile.css" />
 	</head>
@@ -13,7 +14,7 @@
 
 		<div id="headlines">
 			<div id="headlines-content" class="text-2">
-				This is the headline http://www.google.com/
+				http://blog.tomasperez.com
 			</div>
 		</div>
 		
@@ -23,8 +24,30 @@
 				<h1>{{description}}</h1>
 			</div>
 
-			<div class="post bg-2" class="text-1">
+			<div class="navigatorContainer">
+				<div id="navigatorPrev" class="navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
+			</div>
+
+			<div class="post bg-2 text-1" id="post">
 				{{firstPost}}
+			</div>
+
+			<div class="navigatorContainer">
+				<div id="navigatorNext" class="navigator" style="{{^hasNext}}display:none{{/hasNext}}"  position="{{next}}"></div>
+			</div>
+
+			<div class="menu">
+				<ul>
+					<li>
+						<a href="http://www.tomasperez.com/">About me</a>
+					</li>
+					<li>
+						<a href="http://www.github.com/tomasperezv">Projects</a>
+					</li>
+					<li>
+						<a href="http://www.twitter.com/tomasperezv">Follow me</a>
+					</li>
+				</ul>
 			</div>
 
 		</div>
@@ -33,7 +56,16 @@
 		</div>
 
 	</body>
+
+
+	<script type="text/javascript">
+
+		Loader.setDefinitionPath('./js/blog.json');
+		Loader.loadFiles(function() {
+			AjaxEngine.appUrl = 'https://{{api_url}}/';	
+			Blog.init();
+		});
+
+	</script>
+
 </html>
-
-
-

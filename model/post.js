@@ -22,20 +22,31 @@ Post = function() {
 
 Post.prototype = new DataBaseModel.DataBaseModel(); 
 
-Post.prototype.getPosts = function(position, callback) {
+Post.prototype.getPosts = function(filters, callback) {
 
-	var self = this;
+	var self = this,
+		position = filters.position;
 
-	this.load({}, function(model) {
+	this.load({category: filters.category, slug: filters.slug}, function(model) {
 
 		// Get the content of the post
-		var firstPost = model.data.length > 0 ? model.data[0].content : '';
+		var firstPost = category = label = date = '';
+
+		if (model.data.length > 0) {
+			firstPost = model.data[0].content;
+			category = model.data[0].category;
+			label = model.data[0].slug;
+			date = model.data[0].date;
+		}
 
 		// Determine the total number of posts
-		self.count( function(count) {
+		self.count({category: filters.category, slug: filters.slug}, function(count) {
 			callback({
 				count: count,
-				post: firstPost
+				post: firstPost,
+				category: category,
+				label: label,
+				date: date
 			});
 		});
 

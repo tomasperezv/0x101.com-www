@@ -167,7 +167,7 @@ this.getPost = function(request) {
 	request.on('end', function () {
 		var data = qs.parse(body);
 
-		post.getPosts(data.position, function(data) {
+		post.getPosts({position: data.position}, function(data) {
 			api.responseCallback(data);
 		});
 	});
@@ -195,11 +195,6 @@ this.updatePost = function(data) {
 	if (typeof data.content !== 'undefined') {
 
 		var post = new Post();
-
-		if (typeof data.date === 'undefined') {
-			// Update the timestamp automatically
-			data.date = post.getTimestamp();
-		}
 
 		post.update(data, function(postContent)	{
 			api.responseCallback(postContent);

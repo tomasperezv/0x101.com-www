@@ -144,8 +144,11 @@ var Post = {
 
 		updatePost: function(data) {
 			var postId = data.id,
-			post = DOM.get('post_content_' + postId),
-			date = DOM.get('post_date_' + postId);
+				post = DOM.get('post_content_' + postId),
+				slug = DOM.get('post_slug_' + postId),
+				category = DOM.get('post_category_' + postId),
+				date = DOM.get('post_date_' + postId);
+
 			post.value = data.content;
 			date.innerHTML = data.date;
 		}
@@ -170,6 +173,8 @@ var Post = {
 		var postId = post.getAttribute('postId'),
 		postData = {
 			content: DOM.get('post_content_' + postId).value,
+			slug: DOM.get('post_slug_' + postId).value,
+			category: DOM.get('post_category_' + postId).value,
 			id: postId 
 		};
 

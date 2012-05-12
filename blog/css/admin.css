@@ -1,5 +1,21 @@
+#posts {
+	width: 820px;
+	margin: 0 auto 0 auto;
+}
+
 .post {
-	height: 150px;
+	margin: 30px auto 0 auto;
 	width: 600px;
-	margin: 10px 10px 0 0;
+	clear:both;
+}
+
+.post textarea {
+	width: 580px;
+	height: 300px;
+	margin: 0 5px 0 0;
+}
+
+div.post.new {
+	border:1px dotted gold;
+	margin: 50px 0 30px 0;
 }

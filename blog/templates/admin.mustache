@@ -5,40 +5,50 @@
 		<title>{{title}}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
 
 		<script type="text/javascript">
 			document.domain = '{{domain}}';
 		</script>
 
 		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
-		<link rel="stylesheet" href="{{static_domain}}/css/base.css" />
 		<link rel="stylesheet" href="{{static_domain}}/css/admin.css" />
+		<link rel="stylesheet" href="{{static_domain}}/css/base.css" />
 		<link rel="stylesheet" media="only screen and (max-device-width:800px)" href="{{static_domain}}/css/mobile.css" />
 	</head>
-	<body>
 
-		<div id="loginForm" style="display:none">
-			<form action="" method="post">
-				<fieldset>
-					<label for="login">User</label>
-					<input type="text" value="" name="login" id="login" />
-					<label for="password">Password</label>
-					<input type="password" value="" name="password" id="password" />
-					<a href="#"	onclick="Admin.login()">Login</a>
-				</fieldset>
-			</form>
+	<body id="blog">
+
+		<div id="headlines">
+			<div id="headlines-content">
+				<div id="loginForm" style="display:none">
+					<form action="" method="post">
+						<fieldset>
+							<label for="login">User</label>
+							<input type="text" value="" name="login" id="login" />
+							<label for="password">Password</label>
+							<input type="password" value="" name="password" id="password" />
+							<a href="#"	onclick="Admin.login()">Login</a>
+						</fieldset>
+					</form>
+				</div>
+				<a href="#"	onclick="Admin.logout()">Logout</a>
+				{{description}}
+			</div>
 		</div>
 
 		<div id="main" style="display:none" class="text-1">
-			<a href="#"	onclick="Admin.logout()">Logout</a>
-			{{description}}
-			<div id="posts"></div>
+			<div id="title">
+				<h1>blog.tomasperez.com</h1>
+			</div>
+			<div id="posts" class="bg-2"></div>
 		</div>
 
 	</body>
 
 	<script type="text/javascript">
 
+		Loader.setDefinitionPath('/js/loadDefinition.json');
 		Loader.loadFiles(function() {
 			// Overwrite the appURL with the correct value
 			AjaxEngine.appUrl = 'https://{{api_url}}/'; 		

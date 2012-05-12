@@ -6,48 +6,62 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
+		<script type="text/javascript">
+			document.domain = 'tomasperez.com';
+		</script>
 		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
 		<link rel="stylesheet" type="text/css" media="all" href="{{static_domain}}/css/base.css" />
-		<link rel="stylesheet" media="only screen and (max-device-width:800px)" href="{{static_domain}}/css/mobile.css" />
 	</head>
 	<body id="blog">
 
-		<div id="headlines">
-			<div id="headlines-content" class="text-2">
-				http://blog.tomasperez.com
+		<div id="menu">
+			<div class="item blog">
+				<a href="http://blog.tomasperez.com/"></a>
+				<span>My blog</span>
+			</div>
+			<div class="item code">
+				<a href="http://www.github.com/tomasperezv"></a>
+				<span>Code!</span>
 			</div>
 		</div>
 		
 		<div id="main">
 
 			<div id="title" class="text-2">
-				<h1>{{description}}</h1>
+				<h1>@tomasperezv</h1>
+				<span class="motto">
+					var me = {"motto": "It is a capital mistake to theorize before one has data"};
+				</span>
 			</div>
 
-			<div class="navigatorContainer">
-				<div id="navigatorPrev" class="navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
+			<div class="postContainer">
+
+				<div class="navigatorContainer">
+					<div id="navigatorPrev" class="navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
+				</div>
+
+	
+				<article class="post bg-2 text-1" id="post">
+					{{firstPost}}
+
+					{{#noPosts}}
+						<h2>Houston, this is a 404</h2>
+						Well, we have a problem, what are you doing here?
+						<br/>
+						Go to the <a href="http://blog.tomasperez.com/">Index</a>
+					{{/noPosts}}
+
+				</article>
+	
+				<div class="navigatorContainer">
+					<div id="navigatorNext" class="navigator" style="{{^hasNext}}display:none{{/hasNext}}"  position="{{next}}"></div>
+				</div>
+
 			</div>
 
-			<div class="post bg-2 text-1" id="post">
-				{{firstPost}}
-			</div>
-
-			<div class="navigatorContainer">
-				<div id="navigatorNext" class="navigator" style="{{^hasNext}}display:none{{/hasNext}}"  position="{{next}}"></div>
-			</div>
-
-			<div class="menu">
-				<ul>
-					<li>
-						<a href="http://www.tomasperez.com/">About me</a>
-					</li>
-					<li>
-						<a href="http://www.github.com/tomasperezv">Projects</a>
-					</li>
-					<li>
-						<a href="http://www.twitter.com/tomasperezv">Follow me</a>
-					</li>
-				</ul>
+			<div class="aboutMe">
+				<div class="avatar"></div>
+				<a href="http://www.tomasperez.com/" target="_blank">@tomasperezv<a>
 			</div>
 
 		</div>
@@ -63,7 +77,7 @@
 		Loader.setDefinitionPath('./js/blog.json');
 		Loader.loadFiles(function() {
 			AjaxEngine.appUrl = 'https://{{api_url}}/';	
-			Blog.init();
+			Blog.init('{{category}}', '{{label}}');
 		});
 
 	</script>

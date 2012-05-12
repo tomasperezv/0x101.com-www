@@ -1,15 +1,17 @@
 {{#post}}
-	<div id="post_{{id}}">
+	<div id="post_{{id}}" class="post">
 		<span id="post_date_{{id}}">{{date}}</span>
 		<div>
-			<textarea class="post" id="post_content_{{id}}">{{content}}</textarea>
+			<input type="text" value="{{category}}" id="post_category_{{id}}"  />
+			<input type="text" value="{{slug}}" id="post_slug_{{id}}"  />
+			<textarea id="post_content_{{id}}">{{content}}</textarea>
 			<a href="#" onclick="Post.update(this)" postId="{{id}}">Edit</a>
 			<a href="#" onclick="Post.remove(this)" postId="{{id}}">Delete</a>
 		</div>
 	</div>
 {{/post}}
 
-<div>
-	<textarea class="post" id="newPostContent"></textarea>
+<div class="post new">
 	<a href="#" id="newPost">Add post</a>
+	<textarea class="post" id="newPostContent"></textarea>
 </div>

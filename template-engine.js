@@ -8,37 +8,47 @@ var Setup = require('./setup.js'),
 ServerCore = require(basedir + '/server-core'),
 Post = require('./model/post').Post;
 
-this.processData = function(config, callback) {
-	return this.actions[config.action](callback);
+this.processData = function(config, slugInfo, callback) {
+	return this.actions[config.action](callback, slugInfo);
 };
 
 this.blog = {
-	index: function(callback) {
+	index: function(callback, slugInfo) {
 
-		var position = 0;
+		if (slugInfo == null) {
+			slugInfo = {};
+		}
+
+		slugInfo.position = 0;
 
 		var post = new Post(),
 			templateParams = {
-				position: position,
-				title: 'blog.tomasperez.com',
+				position: slugInfo.position,
 				static_domain: ServerCore.staticDomain(),
 				description: 'My personal blog',
 				api_url: ServerCore.apiDomain(),
 			};
 
-		post.getPosts(position, function(postData) {
+		post.getPosts(slugInfo, function(postData) {
 			// Add the extra info to the template params.
 			templateParams.firstPost = postData.post;
 			templateParams.count = postData.count;
+			templateParams.category = postData.category;
+			templateParams.label = postData.label;
 
-			if (position > 0) {
-				templateParams.hasNext = true;
-				templateParams.next = position-1;
+			// 404
+			if (postData.count == 0) {
+				templateParams.noPosts = true;
 			}
 
-			if ( (postData.count - position) > 0 ) {
+			if (slugInfo.position > 0) {
+				templateParams.hasNext = true;
+				templateParams.next = slugInfo.position-1;
+			}
+
+			if ( (postData.count - slugInfo.position) > 1 ) {
 				templateParams.hasPrev = true;
-				templateParams.prev = position+1;
+				templateParams.prev = slugInfo.position+1;
 			}
 
 			callback(templateParams);

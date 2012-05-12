@@ -2,19 +2,19 @@ html {
 	background-image: url(../images/background.png);
 	background-position: left top;
 	background-repeat: repeat-x;
-	font: normal 13px Arial, Helvetica, sans-serif;
+	font: normal 13px Georgia, serif;
 }
 
 .bg-1 {
-	background-color: #2D2D2D;
+	background-color: rgba(102, 102, 102, 0.32);
 }
 
 .bg-2 {
-	background-color: #969696;
+	background-color: white;
 }
 
 .text-1 {
-	color: #C8C8C8;
+	color: #333;
 }
 
 .text-2 {
@@ -22,11 +22,25 @@ html {
 }
 
 a, a:visited {
-	color: white;
+	color: black;
+	text-decoration: none;
 }
 
-#headlines {
-	height: 40px;
+#menu {
+	height: 60px;
+	width: 820px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#menu .item {
+	float:left;
+	height:100%;
+	width:100px;
+}
+
+#menu .item span {
+	display:none;
 }
 
 #headlines div {
@@ -39,26 +53,42 @@ a, a:visited {
 	padding: 12px 0 0 0;
 }
 
-.post, #title {
+#title {
 	width: 820px;
 	margin-right: auto;
+	margin-left: auto;
+	margin-bottom:40px;
+	height: 80px;
 }
 
 #title h1 {
-	font: bold 50px Arial, Helvetica, sans-serif;
-	padding: 25px 0 50px 0;
+	font-weight:bold;
+	font-size:50px;
 	letter-spacing: -2px;
 	text-shadow: #C8C8C8 0 -1px;
-	margin-left: 10%;
+}
+
+#title .motto {
+	display:block;
+	font-size:16px;
+	width: 690px;
+	margin-top:18px;
+	text-align:center;
 }
 
 .post {
+	text-shadow: 0 -1px rgb(224, 223, 187);
+	width: 610px;
+	padding: 30px 15px 30px 15px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	min-height: 300px;
-	padding-top: 5px;
-	padding-left: 5px;
-	font-size: 20px;
+	font-size: 15px;
+	line-height:25px;
+}
+
+.post img {
+	margin: 10px 0 10px 0;
 }
 
 .error {
@@ -70,10 +100,9 @@ a, a:visited {
 }
 
 .menu {
+	float:left;
 	border: 1px solid white;
 	width: 180px;
-	position:fixed;
-	right:20px;
 	top: 100;
 	font-size:20px;
 }
@@ -87,27 +116,80 @@ a, a:visited {
 }
 
 .navigator {
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+	background-position: -2px -2px;
 	float:left;
-	width:50px;
-	height:50px;
+	width:45px;
+	height:45px;
 	position:fixed;
-	background-color:red;
+	background-color:#969696;
+	cursor:pointer;
 }
 
 .navigatorContainer {
 	float:left;
-	width:6%;
-	height:500px;
+	width:45px;
+	height:45px;
+	margin-right:5px;
+}
+
+.navigatorContainer :hover {
+	background-color:white;
 }
 
 #navigatorPrev {
-	margin-left:2%;
 }
 
 #navigatorNext {
-	margin-left:4%;
+	background-position: -50px -2px;
+	margin-left:4px;
 }
 
 .hide {
 	display: none;
+}
+
+.postContainer {
+	width: 840px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.aboutMe {
+	margin-left:5px;
+	width:140px;
+	float:left;
+	height: 141px;
+	background-color:white;
+}
+
+.post h2 {
+	font-size: 25px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.post p {
+	margin-top: 10px;
+}
+
+article a:hover, .aboutMe a:hover {
+	background-color: rgb(217, 239, 255);
+	border-bottom: 1px solid rgb(35, 130, 197);
+	color: rgb(35, 130, 197);
+}
+
+article a, article a:visited, .aboutMe a, .aboutMe a:visited {
+	color: rgb(75, 141, 181);
+	border-bottom: 1px dotted rgb(157, 196, 37);
+	padding: 0 1px;
+}
+
+.avatar {
+	width: 150px;
+	height: 150px;
+	background-image: url(../images/sprite.png);
+	background-position: -224px -58px;
+	background-repeat:no-repeat;
 }

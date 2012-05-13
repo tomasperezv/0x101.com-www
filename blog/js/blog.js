@@ -54,7 +54,7 @@ var Blog = {
 
 	updateURL: function(category, label) {
 		if (window.history && window.history.pushState) {
-			window.history.pushState({category: category, label: label}, '', '/post/' + category + '/' + label);
+			window.history.pushState({category: category, label: label}, '', '/post/' + category + '/' + label + '/');
 		}
 	}
 

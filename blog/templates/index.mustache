@@ -3,8 +3,14 @@
 <html class="bg-1 text-1">
 	<head>
 		<title>{{title}}</title>
+
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 		<meta charset="utf-8" />
+		<meta name="description" content="A personal blog by a Web Developer, currently working and living in Stockholm, Sweden." />
+		<meta name="keywords" content="Javascript,HTML5,PHP,Python,SOLID,Stockholm" />
+		<meta name="author" content="Tomás Pérez" />
+
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
 		<script type="text/javascript">
 			document.domain = 'tomasperez.com';
@@ -14,7 +20,7 @@
 	</head>
 	<body id="blog">
 
-		<div id="menu">
+		<nav id="menu">
 			<div class="item blog">
 				<a href="http://blog.tomasperez.com/"></a>
 				<span>My blog</span>
@@ -23,15 +29,17 @@
 				<a href="http://www.github.com/tomasperezv"></a>
 				<span>Code!</span>
 			</div>
-		</div>
+		</nav>
 		
 		<div id="main">
 
 			<div id="title" class="text-2">
-				<h1>@tomasperezv</h1>
-				<span class="motto">
-					var me = {"motto": "It is a capital mistake to theorize before one has data"};
-				</span>
+				<header>
+					<h1>@tomasperezv</h1>
+					<span class="motto">
+						var me = {"motto": "It is a capital mistake to theorize before one has data"};
+					</span>
+				</header>
 			</div>
 
 			<div class="postContainer">
@@ -59,18 +67,14 @@
 
 			</div>
 
-			<div class="aboutMe">
+			<aside class="aboutMe">
 				<div class="avatar"></div>
-				<a href="http://www.tomasperez.com/" target="_blank">@tomasperezv<a>
-			</div>
+				<a href="http://www.tomasperez.com/" target="_blank">@tomasperezv</a>
+			</aside>
 
 		</div>
 		
-		<div id="bottom">
-		</div>
-
 	</body>
-
 
 	<script type="text/javascript">
 

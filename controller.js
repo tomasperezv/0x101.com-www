@@ -1,6 +1,6 @@
 /**
   * @author <tom@0x101.com>
-  * @class TemplateEngine
+  * @class Controller
   */
 var Setup = require('./setup.js'),
 	basedir = Setup.serverDirectory;

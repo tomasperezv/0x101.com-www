@@ -6,11 +6,35 @@ html {
 }
 
 .bg-1 {
-	background-color: rgba(102, 102, 102, 0.32);
+	background-color: rgb(224, 224, 224);
 }
 
 .bg-2 {
 	background-color: white;
+}
+
+.bg-3 {
+	background-color: rgb(156, 75, 75);
+}
+
+.bg-4 {
+	background-color: rgb(75, 141, 181);
+}
+
+.bg-5 {
+	background-color: rgb(35, 130, 197);
+}
+
+.bg-6 {
+	background-color: rgb(157, 196, 37);
+}
+
+.bg-7 {
+	background-color: rgb(213, 68, 33);
+}
+
+.bg-8 {
+	background-color: #2D2D2D;
 }
 
 .text-1 {
@@ -28,7 +52,7 @@ a, a:visited {
 
 #menu {
 	height: 60px;
-	width: 820px;
+	width: 742px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -37,10 +61,46 @@ a, a:visited {
 	float:left;
 	height:100%;
 	width:100px;
+	background-repeat:no-repeat;
+	text-align:center;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	margin-right:10px;
+	border:1px solid rgb(100, 100, 100);
+}
+
+#menu .item.blog .icon {
+	background-position: -222px -207px;
+}
+
+#menu .item.about .icon {
+	background-position: -265px -207px;
+}
+
+#menu .item.code .icon {
+	background-position: -310px -203px;
+}
+
+#menu .item:hover {
+	background-color: rgb(75, 141, 181);
+}
+
+#menu .item .icon {
+	margin-left:30px;
+	float:left;
+	background-image: url(../images/sprite.png);
+	width: 40px;
+	height:40px;
+	margin-top:2px;
 }
 
 #menu .item span {
-	display:none;
+	color:white;
+	display:block;
+	clear:left;
+	text-shadow: rgb(96, 119, 115) 0 1px;
 }
 
 #headlines div {
@@ -54,41 +114,50 @@ a, a:visited {
 }
 
 #title {
-	width: 820px;
+	width: 742px;
 	margin-right: auto;
 	margin-left: auto;
-	margin-bottom:40px;
-	height: 80px;
+	height: 60px;
 }
 
 #title h1 {
 	font-weight:bold;
-	font-size:50px;
+	font-size:40px;
 	letter-spacing: -2px;
 	text-shadow: #C8C8C8 0 -1px;
 }
 
-#title .motto {
+header {
+	margin-bottom:15px;
+}
+
+header .motto {
 	display:block;
-	font-size:16px;
+	font-size:14px;
 	width: 690px;
-	margin-top:18px;
+	margin-top:15px;
 	text-align:center;
+	color: white;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .post {
 	text-shadow: 0 -1px rgb(224, 223, 187);
-	width: 610px;
-	padding: 30px 15px 30px 15px;
+	width: 710px;
+	padding: 20px 15px 30px 15px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	min-height: 300px;
+	min-height: 400px;
 	font-size: 15px;
 	line-height:25px;
 }
 
 .post img {
 	margin: 10px 0 10px 0;
+	-moz-box-shadow: 5px 5px 3px #888;
+	-webkit-box-shadow: 5px 5px 3px #888;
+	box-shadow: 5px 5px 3px #888;
 }
 
 .error {
@@ -154,14 +223,12 @@ a, a:visited {
 	width: 840px;
 	margin-left: auto;
 	margin-right: auto;
+	overflow: overlay;
+	margin-top:10px;
 }
 
-.aboutMe {
-	margin-left:5px;
-	width:140px;
-	float:left;
-	height: 141px;
-	background-color:white;
+#content {
+	overflow: overlay;
 }
 
 .post h2 {
@@ -174,22 +241,82 @@ a, a:visited {
 	margin-top: 10px;
 }
 
-article a:hover, .aboutMe a:hover {
+article a:hover, .contact a:hover {
 	background-color: rgb(217, 239, 255);
 	border-bottom: 1px solid rgb(35, 130, 197);
 	color: rgb(35, 130, 197);
 }
 
-article a, article a:visited, .aboutMe a, .aboutMe a:visited {
+article a, article a:visited, .contact a, .contact a:visited {
 	color: rgb(75, 141, 181);
 	border-bottom: 1px dotted rgb(157, 196, 37);
 	padding: 0 1px;
 }
 
 .avatar {
-	width: 150px;
-	height: 150px;
+	width: 140px;
+	height: 140px;
 	background-image: url(../images/sprite.png);
 	background-position: -224px -58px;
 	background-repeat:no-repeat;
+}
+
+#footer {
+	clear:both;
+	min-height:85px;
+	width:100%;
+}
+
+#footer .separator {
+	height:4px;
+}
+
+#footer .separator span {
+	height: 100%;
+	width: 20%;
+	display:block;
+	float:left;
+}
+
+.author {
+	display:block;
+	font-weight:bold;
+	margin-top:10px;
+	font-size:13px;
+	text-align:right;
+}
+
+.contact {
+	margin-top:10px;
+	font-size:16px;
+	width: 742px;
+	margin-left: auto;
+	margin-right: auto;
+	color:white;
+	text-align:right;
+}
+
+.contact ul {
+	list-style-type:none;	
+	display:block;
+	float:right;
+}
+
+.contact ul li {
+	margin-bottom:10px;
+}
+
+.html5-badge {
+	float:left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 197px;
+	margin-left:271px;
+}
+
+.html5-badge a, .html5-badge a:visited {
+	border-bottom: none;
+	background-color: #2D2D2D; 
+	color: #2D2D2D; 
+	text-decoration:none;
 }

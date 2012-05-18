@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html class="bg-1 text-1">
+<html class="bg-8 text-1">
 	<head>
 		<title>{{title}}</title>
 
@@ -12,45 +12,56 @@
 		<meta name="author" content="Tomás Pérez" />
 
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
-		<script type="text/javascript">
-			document.domain = 'tomasperez.com';
-		</script>
 		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
 		<link rel="stylesheet" type="text/css" media="all" href="{{static_domain}}/css/base.css" />
 	</head>
 	<body id="blog">
-
-		<nav id="menu">
-			<div class="item blog">
-				<a href="http://blog.tomasperez.com/"></a>
-				<span>My blog</span>
-			</div>
-			<div class="item code">
-				<a href="http://www.github.com/tomasperezv"></a>
-				<span>Code!</span>
-			</div>
-		</nav>
-		
+	
 		<div id="main">
 
-			<div id="title" class="text-2">
-				<header>
-					<h1>@tomasperezv</h1>
-					<span class="motto">
-						var me = {"motto": "It is a capital mistake to theorize before one has data"};
-					</span>
-				</header>
-			</div>
+			<header>
+				<div id="title" class="text-2">
+					<h1>Blog.init('tomasperezv');</h1>
+				</div>
+
+				<nav id="menu">
+					<div class="item blog bg-4">
+						<a href="http://blog.tomasperez.com/">
+							<div class="icon"></div>
+							<span>#blog</span>
+						</a>
+					</div>
+					<div class="item about">
+						<a target="_blank" href="http://www.tomasperez.com/">
+							<div class="icon"></div>
+							<span>#about_me</span>
+						</a>
+					</div>
+					<div class="item code">
+						<a target="_blank"  href="http://www.github.com/tomasperezv">
+							<div class="icon"></div>
+							<span>#code</span>
+						</a>
+					</div>
+				</nav>
+
+				<span class="motto">
+					var me = {"motto": "It is a capital mistake to theorize before one has data"};
+				</span>
+			</header>
+
+		<div id="content" class="bg-1">
 
 			<div class="postContainer">
 
 				<div class="navigatorContainer">
 					<div id="navigatorPrev" class="navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
 				</div>
-
 	
 				<article class="post bg-2 text-1" id="post">
+
 					{{firstPost}}
+					<span class="author">Tom&aacute;s P&eacute;rez {{date}}</span>
 
 					{{#noPosts}}
 						<h2>Houston, this is a 404</h2>
@@ -67,20 +78,44 @@
 
 			</div>
 
-			<aside class="aboutMe">
-				<div class="avatar"></div>
-				<a href="http://www.tomasperez.com/" target="_blank">@tomasperezv</a>
-			</aside>
+		</div>
 
 		</div>
-		
+
+		<div id="footer">
+			<div class="separator">
+				<span class="bg-7"></span>
+				<span class="bg-3"></span>
+				<span class="bg-5"></span>
+				<span class="bg-6"></span>
+				<span class="bg-4"></span>
+			</div>
+			<div class="contact">
+				<ul>
+					<li class="email">
+						tom@0x101.com
+					</li>
+					<li>
+						<a target="_blank" href="http://www.twitter.com/tomasperezv">@tomasperezv</a>
+					</li>
+				</ul>
+
+				<div class="html5-badge">
+					<a href="http://www.w3.org/html/logo/" target="_blank">
+						<img src="{{static_domain}}/images/html5.png" alt="HTML5 Powered with CSS3 / Styling, Performance &amp; Integration, and Semantics" title="HTML5 Powered with CSS3 / Styling, Performance &amp; Integration, and Semantics">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
 	</body>
 
 	<script type="text/javascript">
 
 		Loader.setDefinitionPath('./js/blog.json');
 		Loader.loadFiles(function() {
-			AjaxEngine.appUrl = 'https://{{api_url}}/';	
+			AjaxEngine.appUrl = 'http://{{api_url}}/';	
 			Blog.init('{{category}}', '{{label}}');
 		});
 

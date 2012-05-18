@@ -24,10 +24,9 @@ Post.prototype = new DataBaseModel.DataBaseModel();
 
 Post.prototype.getPosts = function(filters, callback) {
 
-	var self = this,
-		position = filters.position;
+	var self = this;
 
-	this.load({category: filters.category, slug: filters.slug}, function(model) {
+	this.load({position: filters.position, category: filters.category, slug: filters.slug}, function(model) {
 
 		// Get the content of the post
 		var firstPost = category = label = date = '';
@@ -37,20 +36,23 @@ Post.prototype.getPosts = function(filters, callback) {
 			category = model.data[0].category;
 			label = model.data[0].slug;
 			date = model.data[0].date;
+			position = model.data[0].position;
 		}
 
 		// Determine the total number of posts
-		self.count({category: filters.category, slug: filters.slug}, function(count) {
+		self.count({}, function(count) {
+			// Identify the position of the post
 			callback({
 				count: count,
 				post: firstPost,
 				category: category,
+				position: position,
 				label: label,
-				date: date
+				date: self.formatDate(date)
 			});
 		});
 
-	}, 1, {column:'date',type:'desc'}, position);
+	}, 1, {column:'position',type:'desc'});
 
 }
 

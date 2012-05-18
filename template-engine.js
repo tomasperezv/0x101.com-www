@@ -19,11 +19,9 @@ this.blog = {
 			slugInfo = {};
 		}
 
-		slugInfo.position = 0;
-
 		var post = new Post(),
 			templateParams = {
-				position: slugInfo.position,
+				title: 'blog.tomasperez.com',
 				static_domain: ServerCore.staticDomain(),
 				description: 'My personal blog',
 				api_url: ServerCore.apiDomain(),
@@ -35,20 +33,23 @@ this.blog = {
 			templateParams.count = postData.count;
 			templateParams.category = postData.category;
 			templateParams.label = postData.label;
+			templateParams.date = postData.date;
+
+			console.log(postData);
 
 			// 404
 			if (postData.count == 0) {
 				templateParams.noPosts = true;
 			}
 
-			if (slugInfo.position > 0) {
-				templateParams.hasNext = true;
-				templateParams.next = slugInfo.position-1;
+			if (postData.position > 0) {
+				templateParams.hasPrev = true;
+				templateParams.prev = postData.position-1;
 			}
 
-			if ( (postData.count - slugInfo.position) > 1 ) {
-				templateParams.hasPrev = true;
-				templateParams.prev = slugInfo.position+1;
+			if ( (postData.count - postData.position) > 1 ) {
+				templateParams.hasNext = true;
+				templateParams.next = postData.position+1;
 			}
 
 			callback(templateParams);

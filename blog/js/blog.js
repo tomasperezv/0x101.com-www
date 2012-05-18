@@ -17,6 +17,10 @@ var Blog = {
 		}
 	},
 
+	_formatPost: function(data) {
+		return  data.post + '<span class="author">Tom&aacute;s P&eacute;rez ' + data.date + '</span>';
+	},
+
 	navigate: function(event) {
 
 		var position = parseInt(this.getAttribute('position')),
@@ -26,7 +30,7 @@ var Blog = {
 			'getPost', 
 			{position: position}, 
 			function(result) {
-				DOM.get('post').innerHTML = result.post;
+				DOM.get('post').innerHTML = Blog._formatPost(result);
 
 				Blog.updateURL(result.category, result.label);
 
@@ -34,19 +38,19 @@ var Blog = {
 					prev = DOM.get('navigatorPrev');
 
 				if (position > 0) {
-					next.setAttribute('position', parseInt(position)-1);
-					next.style.display = '';
-					next.onclick = Blog.navigate;
-				} else {
-					next.style.display = 'none';
-				}
-
-				if ( (result.count - position) > 1) {
-					prev.setAttribute('position', parseInt(position)+1);
+					prev.setAttribute('position', parseInt(position)-1);
 					prev.style.display = '';
 					prev.onclick = Blog.navigate;
 				} else {
 					prev.style.display = 'none';
+				}
+
+				if ( (result.count - position) > 1) {
+					next.setAttribute('position', parseInt(position)+1);
+					next.style.display = '';
+					next.onclick = Blog.navigate;
+				} else {
+					next.style.display = 'none';
 				}
 
 			});

@@ -35,8 +35,6 @@ this.blog = {
 			templateParams.label = postData.label;
 			templateParams.date = postData.date;
 
-			console.log(postData);
-
 			// 404
 			if (postData.count == 0) {
 				templateParams.noPosts = true;

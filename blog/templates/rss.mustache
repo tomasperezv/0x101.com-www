@@ -11,7 +11,11 @@
 		{{#post}}
 			<item>
 				<title>{{title}}</title>
-				<description>{{content}}</description>
+				<description>
+				<![CDATA[
+					{{content}}
+				]]>
+				</description>
 				<link>{{link}}</link>
 				<guid>{{id}}</guid>
 				<pubDate>{{date}}</pubDate>

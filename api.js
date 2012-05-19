@@ -141,8 +141,8 @@ this.getPosts = function() {
 			} else {
 				console.log('serving template ' + templateName);
 
-				var template = Handlebars.compile(template);
-				var output = template({post: model.data});
+				var template = Handlebars.compile(template),
+					output = template({post: model.data});
 
 				responseA.writeHead(200, {'Access-Control-Allow-Origin': '*', 'Content-type': 'text/html'});
 				responseA.write(output, "binary");

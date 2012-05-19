@@ -147,7 +147,8 @@ var Post = {
 				post = DOM.get('post_content_' + postId),
 				slug = DOM.get('post_slug_' + postId),
 				category = DOM.get('post_category_' + postId),
-				date = DOM.get('post_date_' + postId);
+				date = DOM.get('post_date_' + postId),
+				position = DOM.get('post_position_' + postId);
 
 			post.value = data.content;
 			date.innerHTML = data.date;
@@ -175,6 +176,7 @@ var Post = {
 			content: DOM.get('post_content_' + postId).value,
 			slug: DOM.get('post_slug_' + postId).value,
 			category: DOM.get('post_category_' + postId).value,
+			position: DOM.get('post_position_' + postId).value,
 			id: postId 
 		};
 

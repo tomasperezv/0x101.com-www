@@ -19,3 +19,7 @@ div.post.new {
 	border:1px dotted gold;
 	margin: 50px 0 30px 0;
 }
+
+#headlines a, #headlines a:visited {
+	color:white;
+}

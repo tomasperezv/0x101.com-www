@@ -72,15 +72,15 @@ a, a:visited {
 }
 
 #menu .item.blog .icon {
-	background-position: -222px -207px;
+	background-position: -96px -4px;
 }
 
 #menu .item.about .icon {
-	background-position: -265px -207px;
+	background-position: -138px -2px;
 }
 
 #menu .item.code .icon {
-	background-position: -310px -203px;
+	background-position: -183px -2px;
 }
 
 #menu .item:hover {

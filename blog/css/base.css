@@ -320,3 +320,24 @@ article a, article a:visited, .contact a, .contact a:visited {
 	color: #2D2D2D; 
 	text-decoration:none;
 }
+
+.html5-badge .badge-image {
+	width: 182px;
+	height: 64px;
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+	background-position: 0px -50px;
+	display:block;
+}
+
+header .rss {
+	display:inline-block;
+	height: 32px;
+	width:32px;
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+	background-position: -190px -65px;
+	position:absolute;
+	right:260px;
+	margin-top:-22px;
+}

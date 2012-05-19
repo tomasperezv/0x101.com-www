@@ -77,7 +77,6 @@ this.rss = {
 			for (var i = 0; i < nPosts; i++) {
 				data[i].title = data[i].slug.replace(/-/g, ' ');
 				data[i].title = data[i].title[0].toUpperCase() + data[i].title.substr(1);
-				data[i].content = data[i].content;
 				data[i].date = posts.formatDateRFC822(data[i].date);
 				data[i].link = 'http://blog.tomasperez.com/post/' + data[i].category + '/' + data[i].slug + '/';
 			}

@@ -23,7 +23,6 @@ this.blog = {
 			templateParams = {
 				title: 'blog.tomasperez.com',
 				static_domain: ServerCore.staticDomain(),
-				description: 'My personal blog',
 				api_url: ServerCore.apiDomain(),
 			};
 
@@ -59,16 +58,42 @@ this.blog = {
 this.admin = {
 	index: function(callback) {
 		callback({
-			title: 'blog.tomasperez.com',
+			title: 'Admin panel',
 			static_domain: ServerCore.staticDomain(),
-			api_url: ServerCore.apiDomain(),
-			domain: 'tomasperez.com',
-			description: 'Admin panel'
+			api_url: ServerCore.apiDomain(true),
+			domain: 'tomasperez.com'
 		});
+	}
+};
+
+this.rss = {
+	index: function(callback) {
+
+		var posts = new Post();
+		posts.load({}, function(model) {
+			// Some changes in order to make it compatible with the RSS format
+			var data = model.data;
+			var nPosts = data.length;
+			for (var i = 0; i < nPosts; i++) {
+				data[i].title = escape(data[i].content.substr(0,100).replace(/(<([^>]+)>)/ig,""));
+				data[i].content = escape(data[i].content);
+				data[i].date = posts.formatDateRFC822(data[i].date);
+			}
+
+			callback({
+				pub_date: posts.formatDateRFC822(),
+				build_date: posts.formatDateRFC822(),
+				static_domain: ServerCore.staticDomain(),
+				api_url: ServerCore.apiDomain(),
+				post: data
+			});
+		});
+
 	}
 };
 
 this.actions = {
 	'blog.index': this.blog.index,
-	'admin.index': this.admin.index
+	'admin.index': this.admin.index,
+	'rss.index': this.rss.index
 };

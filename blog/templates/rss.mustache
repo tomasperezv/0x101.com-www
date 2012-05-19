@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+	<channel>
+		<title>Blog.init('tomasperezv');</title>
+		<description>A personal blog by a Web Developer, currently working and living in Stockholm, Sweden.</description>
+		<link>http://blog.tomasperez.com/rss/</link>
+		<lastBuildDate>{{build_date}}</lastBuildDate>
+		<pubDate>{{pub_date}}</pubDate>
+		<ttl>1800</ttl>
+
+		{{#post}}
+			<item>
+				<title>{{title}}</title>
+				<description>{{content}}</description>
+				<link>{{link}}</link>
+				<guid>{{id}}</guid>
+				<pubDate>{{date}}</pubDate>
+			</item>
+		{{/post}}
+	 
+	</channel>
+</rss>

@@ -12,8 +12,11 @@
 		<meta name="author" content="Tomás Pérez" />
 
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
-		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 		<link rel="stylesheet" type="text/css" media="all" href="{{static_domain}}/css/base.css" />
+		<script type="text/javascript" src="{{static_domain}}/js/loader.js"></script>
 		<link rel="alternate" type="application/rss+xml" title="Blog.init(&quot;tomasperezv&quot;);" href="http://blog.tomasperez.com/feed/" />
 
 	</head>
@@ -29,19 +32,19 @@
 				<nav id="menu">
 					<div class="item blog bg-4">
 						<a href="http://blog.tomasperez.com/">
-							<div class="icon"></div>
+							<div class="sprite icon"></div>
 							<span>#blog</span>
 						</a>
 					</div>
 					<div class="item about">
 						<a target="_blank" href="http://www.tomasperez.com/">
-							<div class="icon"></div>
+							<div class="sprite icon"></div>
 							<span>#about_me</span>
 						</a>
 					</div>
 					<div class="item code">
 						<a target="_blank"  href="http://www.github.com/tomasperezv">
-							<div class="icon"></div>
+							<div class="sprite icon"></div>
 							<span>#code</span>
 						</a>
 					</div>
@@ -52,7 +55,7 @@
 				</span>
 
 				<a href="http://feeds.feedburner.com/tomasperezv" target="_blank">
-					<div class="rss"></div>
+					<div class="sprite rss"></div>
 				</a>
 
 			</header>
@@ -62,7 +65,7 @@
 			<div class="postContainer">
 
 				<div class="navigatorContainer">
-					<div id="navigatorPrev" class="navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
+					<div id="navigatorPrev" class="sprite navigator" style="{{^hasPrev}}display:none{{/hasPrev}}" position="{{prev}}"></div>
 				</div>
 	
 				<article class="post bg-2 text-1" id="post">
@@ -80,7 +83,7 @@
 				</article>
 	
 				<div class="navigatorContainer">
-					<div id="navigatorNext" class="navigator" style="{{^hasNext}}display:none{{/hasNext}}"  position="{{next}}"></div>
+					<div id="navigatorNext" class="sprite navigator" style="{{^hasNext}}display:none{{/hasNext}}"  position="{{next}}"></div>
 				</div>
 
 			</div>
@@ -97,7 +100,7 @@
 				<span class="bg-6"></span>
 				<span class="bg-4"></span>
 			</div>
-			<div class="contact">
+			<div class="contact text-2">
 				<ul>
 					<li class="email">
 						tom@0x101.com
@@ -109,7 +112,7 @@
 
 				<div class="html5-badge">
 					<a href="http://www.w3.org/html/logo/" target="_blank" title="HTML5 Powered with CSS3 / Styling, Performance &amp; Integration, and Semantics">
-						<span class="badge-image"></span>
+						<span class="sprite badge-image"></span>
 					</a>
 				</div>
 

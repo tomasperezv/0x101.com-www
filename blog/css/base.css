@@ -5,56 +5,20 @@ html {
 	font: normal 13px Georgia, serif;
 }
 
-.bg-1 {
-	background-color: rgb(224, 224, 224);
-}
-
-.bg-2 {
-	background-color: white;
-}
-
-.bg-3 {
-	background-color: rgb(156, 75, 75);
-}
-
-.bg-4 {
-	background-color: rgb(75, 141, 181);
-}
-
-.bg-5 {
-	background-color: rgb(35, 130, 197);
-}
-
-.bg-6 {
-	background-color: rgb(157, 196, 37);
-}
-
-.bg-7 {
-	background-color: rgb(213, 68, 33);
-}
-
-.bg-8 {
-	background-color: #2D2D2D;
-}
-
-.text-1 {
-	color: #333;
-}
-
-.text-2 {
-	color: white;
-}
-
 a, a:visited {
 	color: black;
 	text-decoration: none;
 }
 
+.sprite {
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+}
+
 #menu {
 	height: 60px;
 	width: 742px;
-	margin-right: auto;
-	margin-left: auto;
+	margin: 0 auto 0 auto;
 }
 
 #menu .item {
@@ -88,12 +52,10 @@ a, a:visited {
 }
 
 #menu .item .icon {
-	margin-left:30px;
+	margin: 2px 0 0 30px;
 	float:left;
-	background-image: url(../images/sprite.png);
 	width: 40px;
 	height:40px;
-	margin-top:2px;
 }
 
 #menu .item span {
@@ -103,20 +65,9 @@ a, a:visited {
 	text-shadow: rgb(96, 119, 115) 0 1px;
 }
 
-#headlines div {
-	width: 820px;
-	height: 70px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 12px 0 0 0;
-}
-
 #title {
 	width: 742px;
-	margin-right: auto;
-	margin-left: auto;
+	margin: 0 auto 0 auto;
 	height: 60px;
 }
 
@@ -135,11 +86,19 @@ header .motto {
 	display:block;
 	font-size:14px;
 	width: 690px;
-	margin-top:15px;
 	text-align:center;
 	color: white;
-	margin-left:auto;
-	margin-right:auto;
+	margin: 15px auto 0 auto;
+}
+
+header .rss {
+	display:inline-block;
+	height: 32px;
+	width:32px;
+	background-position: -190px -65px;
+	position:absolute;
+	right:20%;
+	margin-top:-22px;
 }
 
 .post {
@@ -160,33 +119,11 @@ header .motto {
 	box-shadow: 5px 5px 3px #888;
 }
 
-.error {
-	background-color:gold;
-}
-
 .post {
 	float:left;
 }
 
-.menu {
-	float:left;
-	border: 1px solid white;
-	width: 180px;
-	top: 100;
-	font-size:20px;
-}
-
-.menu li {
-	margin-bottom:5px;
-}
-
-.menu ul {
-	list-style-type: none;
-}
-
 .navigator {
-	background-image: url(../images/sprite.png);
-	background-repeat: no-repeat;
 	background-position: -2px -2px;
 	float:left;
 	width:45px;
@@ -207,28 +144,20 @@ header .motto {
 	background-color:white;
 }
 
-#navigatorPrev {
-}
-
 #navigatorNext {
 	background-position: -50px -2px;
 	margin-left:4px;
 }
 
-.hide {
-	display: none;
-}
-
 .postContainer {
 	width: 840px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 10px auto 0 auto;
 	overflow: overlay;
-	margin-top:10px;
 }
 
 #content {
-	overflow: overlay;
+	width: 100%;
+	float:left;
 }
 
 .post h2 {
@@ -251,14 +180,6 @@ article a, article a:visited, .contact a, .contact a:visited {
 	color: rgb(75, 141, 181);
 	border-bottom: 1px dotted rgb(157, 196, 37);
 	padding: 0 1px;
-}
-
-.avatar {
-	width: 140px;
-	height: 140px;
-	background-image: url(../images/sprite.png);
-	background-position: -224px -58px;
-	background-repeat:no-repeat;
 }
 
 #footer {
@@ -287,12 +208,9 @@ article a, article a:visited, .contact a, .contact a:visited {
 }
 
 .contact {
-	margin-top:10px;
 	font-size:16px;
 	width: 742px;
-	margin-left: auto;
-	margin-right: auto;
-	color:white;
+	margin: 10px auto 0 auto;
 	text-align:right;
 }
 
@@ -308,10 +226,8 @@ article a, article a:visited, .contact a, .contact a:visited {
 
 .html5-badge {
 	float:left;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto 0 271px;
 	width: 197px;
-	margin-left:271px;
 }
 
 .html5-badge a, .html5-badge a:visited {
@@ -324,20 +240,46 @@ article a, article a:visited, .contact a, .contact a:visited {
 .html5-badge .badge-image {
 	width: 182px;
 	height: 64px;
-	background-image: url(../images/sprite.png);
-	background-repeat: no-repeat;
 	background-position: 0px -50px;
 	display:block;
 }
 
-header .rss {
-	display:inline-block;
-	height: 32px;
-	width:32px;
-	background-image: url(../images/sprite.png);
-	background-repeat: no-repeat;
-	background-position: -190px -65px;
-	position:absolute;
-	right:260px;
-	margin-top:-22px;
+.text-1 {
+	color: #333;
+}
+
+.text-2 {
+	color: white;
+}
+
+.bg-1 {
+	background-color: rgb(224, 224, 224);
+}
+
+.bg-2 {
+	background-color: white;
+}
+
+.bg-3 {
+	background-color: rgb(156, 75, 75);
+}
+
+.bg-4 {
+	background-color: rgb(75, 141, 181);
+}
+
+.bg-5 {
+	background-color: rgb(35, 130, 197);
+}
+
+.bg-6 {
+	background-color: rgb(157, 196, 37);
+}
+
+.bg-7 {
+	background-color: rgb(213, 68, 33);
+}
+
+.bg-8 {
+	background-color: #2D2D2D;
 }

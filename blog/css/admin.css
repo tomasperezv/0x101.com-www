@@ -23,3 +23,7 @@ div.post.new {
 #headlines a, #headlines a:visited {
 	color:white;
 }
+
+.error {
+	background-color:gold;
+}

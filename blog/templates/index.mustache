@@ -123,7 +123,7 @@
 
 	<script type="text/javascript">
 
-		Loader.setDefinitionPath('./js/blog.json');
+		Loader.setDefinition(["./js/dom.js", "./js/blog.js"]);
 		Loader.loadFiles(function() {
 			AjaxEngine.appUrl = 'http://{{api_url}}/';	
 			Blog.init('{{category}}', '{{label}}');

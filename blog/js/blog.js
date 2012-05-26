@@ -21,6 +21,43 @@ var Blog = {
 		return  data.post + '<span class="author">Tom&aacute;s P&eacute;rez ' + data.date + '</span>';
 	},
 
+	_injectGist: function(node, el) {
+		if ( DOM.isScriptElement(node) ) {
+
+			var frame = document.createElement('iframe'),
+				randomId = 'gist_' + Math.floor(Math.random()*1000);
+
+			frame.id = randomId;
+			frame.style.width = '100%';
+			frame.style.border = 0;
+			frame.frameborder = 0;
+			frame.scrolling = 'no';
+			el.appendChild(frame);
+
+			var doc = frame.contentDocument || frame.contentWindow.document;
+			var html = '<html>'+
+				'<script type="text/javascript">' +
+				'function adjust() {' +
+				'var iframe = parent.document.getElementById("'+frame.id+'");' +
+				'iframe.height = document.body.offsetHeight;' +
+				'}' +
+				'</script>' +
+				'<body onload="adjust();">' +
+				'<div id="'+'test2'+'">' +
+				'<script type="text/javascript" src="'+node.src+'"></script>' +   
+				'</div>' +
+				'</body>' +
+				'</html>';
+
+			doc.open('text/html',false);
+			doc.write(html);
+			doc.close();
+			
+		} else {
+			el.appendChild(node);
+		}
+	},
+
 	navigate: function(event) {
 
 		var position = parseInt(this.getAttribute('position')),
@@ -30,7 +67,7 @@ var Blog = {
 			'getPost', 
 			{position: position}, 
 			function(result) {
-				DOM.get('post').innerHTML = Blog._formatPost(result);
+				DOM.inject(DOM.get('post'), Blog._formatPost(result), Blog._injectGist);
 
 				Blog.updateURL(result.category, result.label);
 

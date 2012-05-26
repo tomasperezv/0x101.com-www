@@ -17,15 +17,15 @@ var DOM = {
 				this.toggle(el[i]);
 			}
 		} else {
-			el = (typeof el == 'string' ? this.get(el) : el);
-			var style = el.style;
+			var el = (typeof el == 'string' ? this.get(el) : el),
+				style = el.style;
 			style.display = (style.display == 'none' ? '' : 'none');
 		}
 	},
 
 	show: function(el) {
-		el = (typeof el == 'string' ? this.get(el) : el);
-		var style = el.style;
+		var el = (typeof el == 'string' ? this.get(el) : el),
+			style = el.style;
 		if (style.display == 'none') {
 			style.display = '';
 		}
@@ -33,6 +33,53 @@ var DOM = {
 
 	get: function(id) {
 		return document.getElementById(id);
+	},
+
+	inject: function(el, rawHTML, customFunc) {
+
+		if (document.createRange) {
+			var el = (typeof el == 'string' ? this.get(el) : el),
+				range = document.createRange();
+
+			range.selectNode(el);
+
+			var rawTemplate = range.createContextualFragment(rawHTML),
+				template = document.createDocumentFragment(),
+				nChilds = rawTemplate.childNodes.length;
+
+			el.innerHTML = '';
+
+			for(var i=0;i<nChilds;i++) {
+				var node = rawTemplate.childNodes[i].cloneNode(true);
+
+				if (typeof customFunc === 'undefined') {
+					if ( this.isScriptElement(node) ) {
+						var script = document.createElement('script');
+						script.type = 'text/javascript';
+						script.src = node.src;
+						template.appendChild(script);
+					} else {
+						template.appendChild(node);
+					}
+				} else {
+					customFunc(node, el);
+				}
+
+			}
+
+			if (typeof customFunc === 'undefined') {
+				el.appendChild(template);
+			}
+
+		} else {
+			el.innerHTML = rawHTML;
+		}
+
+	},
+
+	isScriptElement: function(node) {
+		return node.nodeType === Node.ELEMENT_NODE &&
+				node.toString().indexOf('HTMLScriptElement') > 0
 	}
 };
 

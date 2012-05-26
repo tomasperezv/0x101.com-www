@@ -9,9 +9,9 @@
  * );
  */
 var Setup = require('../setup.js'),
-	basedir = Setup.serverDirectory;
-
-var DataBaseModel = require('../' + basedir + '/model/database-model');
+	basedir = Setup.serverDirectory,
+	DataBaseModel = require('../' + basedir + '/model/database-model'),
+	DataBaseFormat = require('../' + basedir + '/database/database-format');
 
 Post = function() {
 
@@ -48,7 +48,7 @@ Post.prototype.getPosts = function(filters, callback) {
 				category: category,
 				position: position,
 				label: label,
-				date: self.formatDate(date)
+				date: DataBaseFormat.toDate(date)
 			});
 		});
 

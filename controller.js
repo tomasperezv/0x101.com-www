@@ -3,10 +3,10 @@
   * @class Controller
   */
 var Setup = require('./setup.js'),
-	basedir = Setup.serverDirectory;
-
-ServerCore = require(basedir + '/server-core'),
-Post = require('./model/post').Post;
+	basedir = Setup.serverDirectory,
+	ServerCore = require(basedir + '/server-core'),
+	Post = require('./model/post').Post,
+	DataBaseFormat = require(basedir + '/database/database-format');
 
 this.processData = function(config, slugInfo, callback) {
 	return this.actions[config.action](callback, slugInfo);
@@ -77,13 +77,13 @@ this.rss = {
 			for (var i = 0; i < nPosts; i++) {
 				data[i].title = data[i].slug.replace(/-/g, ' ');
 				data[i].title = data[i].title[0].toUpperCase() + data[i].title.substr(1);
-				data[i].date = posts.formatDateRFC822(data[i].date);
+				data[i].date = DataBaseFormat.toDateRFC822(data[i].date);
 				data[i].link = 'http://blog.tomasperez.com/post/' + data[i].category + '/' + data[i].slug + '/';
 			}
 
 			callback({
-				pub_date: posts.formatDateRFC822(),
-				build_date: posts.formatDateRFC822(),
+				pub_date: DataBaseFormat.toDateRFC822(),
+				build_date: DataBaseFormat.toDateRFC822(),
 				static_domain: ServerCore.staticDomain(),
 				api_url: ServerCore.apiDomain(),
 				post: data

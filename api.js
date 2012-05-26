@@ -11,6 +11,7 @@ var Post = require('./model/post').Post,
 	Session = require(basedir + '/model/session').Session,
 	Router = require(basedir + '/router.js'),
 	Handlebars = require('handlebars'),
+	DataBaseFormat = require(basedir + '/database/database-format'),
 	fs = require('fs'),
 	qs = require('querystring');
 
@@ -120,8 +121,11 @@ this.servePrivate = function(request, callback) {
 };
 
 this.responseCallback = function(data) {
-	responseA.writeHead(200, {'Access-Control-Allow-Origin': '*', 'Content-type': 'application/json'});
-	responseA.write( JSON.stringify(data) );
+	responseA.writeHead(200, {
+		'Content-type': 'application/json',
+		'Access-Control-Allow-Origin': '*'
+	});
+	responseA.write(JSON.stringify(data), "utf-8");
 
 	responseA.end();
 };
@@ -144,8 +148,11 @@ this.getPosts = function() {
 				var template = Handlebars.compile(template),
 					output = template({post: model.data});
 
-				responseA.writeHead(200, {'Access-Control-Allow-Origin': '*', 'Content-type': 'text/html'});
-				responseA.write(output, "binary");
+				responseA.writeHead(200, {
+					'Content-type': 'text/html',
+					'Access-Control-Allow-Origin': '*'
+				});
+				responseA.write(output, "utf-8");
 				responseA.end();
 			}
 		});
@@ -180,7 +187,7 @@ this.addPost = function(data) {
 
 	if (typeof data.content !== 'undefined') {
 		var posts = new Post();
-		posts.create({content: data.content, date: posts.getTimestamp()}, function(postId)	{
+		posts.create({content: data.content, date: DataBaseFormat.timestamp()}, function(postId)	{
 			console.log('created post ' + postId);
 			api.responseCallback({id: postId});
 		});
@@ -251,7 +258,7 @@ this.login = function(request) {
 			if (typeof user.id !== 'undefined') {
 
 				var session = new Session();
-				session.createAndLoad({user_id: user.id, challenge: session.getRandomString(), creation_date: session.getTimestamp()}, function(session) {
+				session.createAndLoad({user_id: user.id, challenge: session.getRandomString(), creation_date: DataBaseFormat.timestamp()}, function(session) {
 					// Add the username to the session info
 					session.login = data.login;
 					api.responseCallback(session);

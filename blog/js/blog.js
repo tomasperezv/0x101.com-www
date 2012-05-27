@@ -38,14 +38,12 @@ var Blog = {
 			var html = '<html>'+
 				'<script type="text/javascript">' +
 				'function adjust() {' +
-				'var iframe = parent.document.getElementById("'+frame.id+'");' +
+				'var iframe = parent.document.getElementById("'+randomId+'");' +
 				'iframe.height = document.body.offsetHeight;' +
 				'}' +
 				'</script>' +
 				'<body onload="adjust();">' +
-				'<div id="'+'test2'+'">' +
 				'<script type="text/javascript" src="'+node.src+'"></script>' +   
-				'</div>' +
 				'</body>' +
 				'</html>';
 

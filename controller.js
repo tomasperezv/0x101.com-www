@@ -88,7 +88,7 @@ this.rss = {
 				api_url: ServerCore.apiDomain(),
 				post: data
 			});
-		});
+		}, 100, {column: 'position', type: 'desc'});
 
 	}
 };

@@ -84,21 +84,27 @@ header {
 
 header .motto {
 	display:block;
-	font-size:14px;
+	font-size:15px;
 	width: 690px;
 	text-align:center;
 	color: white;
 	margin: 15px auto 0 auto;
 }
 
-header .rss {
+.motto span {
+	float: left;
+	height: 28px;
+	margin-left: 82px;
+}
+
+.motto .rss {
 	display:inline-block;
 	height: 32px;
 	width:32px;
 	background-position: -190px -65px;
 	position:absolute;
-	right:20%;
-	margin-top:-22px;
+	margin-top:-5px;
+	margin-left: 65px;
 }
 
 .post {
@@ -145,7 +151,7 @@ header .rss {
 }
 
 #navigatorNext {
-	background-position: -50px -2px;
+	background-position: -49px -2px;
 	margin-left:4px;
 }
 

@@ -67,6 +67,10 @@ this.serve = function(request, response) {
 
 			break;
 
+		case 'filterTweets':
+			this.filterTweets(request);
+			break;
+
 		case 'removePost':
 			this.servePrivate(request, function(data) {
 				self.removePost(data);
@@ -269,5 +273,25 @@ this.login = function(request) {
 			}
 
 		});
+	});
+};
+
+/**
+ * @author tom@0x101.com
+ * API interface for filtering tweets using the google prediction API,
+ * used by the geo-twitter service: http://geo-twitter.tomasperez.com/
+ */
+this.filterTweets = function(request) {
+	var api = this;
+
+	var body = '';
+	request.on('data', function (data) {
+		body += data;
+	});
+
+	request.on('end', function () {
+		var data = qs.parse(body);
+		GeoTwitter = require('./geo-twitter/geo-twitter.js'),
+		api.responseCallback(GeoTwitter.filterTweets(data));
 	});
 };

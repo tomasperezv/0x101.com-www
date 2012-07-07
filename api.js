@@ -291,7 +291,7 @@ this.filterTweets = function(request) {
 
 	request.on('end', function () {
 		var data = qs.parse(body);
-		GeoTwitter = require('./geo-twitter/geo-twitter.js'),
+		GeoTwitter = require('./geo-twitter/server/geo-twitter.js'),
 		api.responseCallback(GeoTwitter.filterTweets(data));
 	});
 };

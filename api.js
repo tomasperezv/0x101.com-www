@@ -292,6 +292,13 @@ this.filterTweets = function(request) {
 	request.on('end', function () {
 		var data = qs.parse(body);
 		GeoTwitter = require('./geo-twitter/server/geo-twitter.js'),
-		api.responseCallback(GeoTwitter.filterTweets(data));
+		GeoTwitter.filterTweets(function(data) {
+			responseA.writeHead(200, {
+				'Content-type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
+			});
+			responseA.write(data, "utf-8");
+			responseA.end();
+		}, data);
 	});
 };

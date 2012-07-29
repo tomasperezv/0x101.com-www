@@ -77,8 +77,7 @@ this.serve = function(request, response) {
 			});
 
 			break;
-			
-		
+
 		default:
 			this.responseCallback({'status': 'active'});
 			// Nothing to do here, move along
@@ -282,23 +281,8 @@ this.login = function(request) {
  * used by the geo-twitter service: http://geo-twitter.tomasperez.com/
  */
 this.filterTweets = function(request) {
-	var api = this;
-
-	var body = '';
-	request.on('data', function (data) {
-		body += data;
-	});
-
-	request.on('end', function () {
-		var data = qs.parse(body);
-		GeoTwitter = require('./geo-twitter/server/geo-twitter.js'),
-		GeoTwitter.filterTweets(function(data) {
-			responseA.writeHead(200, {
-				'Content-type': 'application/json',
-				'Access-Control-Allow-Origin': '*'
-			});
-			responseA.write(data, "utf-8");
-			responseA.end();
-		}, data);
-	});
+	GeoTwitter = require('./geo-twitter/server/geo-twitter.js')(),
+	GeoTwitter.filterTweets(function(data) {
+		responseA.send(data);
+	}, request);
 };
